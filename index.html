@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>逐行剖析 Redux.js 源码</title>
+    <meta name="description" content="">
+    <meta name="generator" content="VuePress 1.3.1">
+    <link rel="icon" href="/Learn-Redux-Source-Code/logo.png">
+  <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/Learn-Redux-Source-Code/assets/css/0.styles.25059dc5.css" as="style"><link rel="preload" href="/Learn-Redux-Source-Code/assets/js/app.5273d11c.js" as="script"><link rel="preload" href="/Learn-Redux-Source-Code/assets/js/2.eec387ab.js" as="script"><link rel="preload" href="/Learn-Redux-Source-Code/assets/js/7.c8f112ea.js" as="script"><link rel="preload" href="/Learn-Redux-Source-Code/assets/js/3.d639fa91.js" as="script"><link rel="prefetch" href="/Learn-Redux-Source-Code/assets/js/4.99d4d64c.js"><link rel="prefetch" href="/Learn-Redux-Source-Code/assets/js/5.36f9c396.js"><link rel="prefetch" href="/Learn-Redux-Source-Code/assets/js/6.39c9a3ad.js"><link rel="prefetch" href="/Learn-Redux-Source-Code/assets/js/8.83a718ee.js">
+    <link rel="stylesheet" href="/Learn-Redux-Source-Code/assets/css/0.styles.25059dc5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Learn-Redux-Source-Code/" class="home-link router-link-exact-active router-link-active"><!----> <span class="site-name">逐行剖析 Redux.js 源码</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/NLRX-WJC/Learn-Redux-Source-Code" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/NLRX-WJC/Learn-Redux-Source-Code" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>写在最前面</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Learn-Redux-Source-Code/start/" class="sidebar-link">写在最前面</a></li></ul></section></li></ul> </aside> <main aria-labelledby="main-title" class="home"><header class="hero"><img src="/Learn-Redux-Source-Code/logo.png" alt="hero"> <h1 id="main-title">
+      逐行剖析 Redux.js 源码
+    </h1> <!----> <p class="action"><a href="/Learn-Redux-Source-Code/start/" class="nav-link action-button">
+  开始学习
+</a></p></header> <div class="features"><div class="feature"><h2>什么是 Redux</h2> <p>从 Redux 产生的原因以及 Redux 的设计思想宏观了解 Redux。</p></div><div class="feature"><h2>Redux 怎么用</h2> <p>以一个小 demo 为例来介绍 Redux 的基本用法。</p></div><div class="feature"><h2>Redux 源码剖析（重点）</h2> <p>从 Redux 源码的入口文件开始逐行剖析源码。</p></div><div class="feature"><h2>Redux 工程化最佳实践（仅供参考）</h2> <p>从项目工程化的角度来总结 Redux 使用的最佳实践。</p></div></div> <div class="theme-default-content custom content__default"></div> <div class="footer">
+    MIT Licensed | Copyright © 2020-present 难凉热血
+  </div></main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/Learn-Redux-Source-Code/assets/js/app.5273d11c.js" defer></script><script src="/Learn-Redux-Source-Code/assets/js/2.eec387ab.js" defer></script><script src="/Learn-Redux-Source-Code/assets/js/7.c8f112ea.js" defer></script><script src="/Learn-Redux-Source-Code/assets/js/3.d639fa91.js" defer></script>
+  </body>
+</html>
