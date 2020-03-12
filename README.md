@@ -63,7 +63,7 @@
 
 江山父老能容我，不使人间造孽钱。您的赞赏，是对我写作最大的认可和鼓励。
 
-![](~@/start/1.png)
+![](./pay.png)
 
 <details open=“open”>
  <summary>点击收起/打开赞赏名单</summary>
